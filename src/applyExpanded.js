@@ -1,4 +1,3 @@
-import postcss from 'postcss';
 import valueParser from 'postcss-value-parser';
 import {block as commentRegex} from 'comment-regex';
 import applyTransformFeatures from './applyTransformFeatures';
@@ -12,7 +11,9 @@ import space from './space';
 import sameLine from './sameLine';
 import walk from './walk';
 
-const {unprefixed} = postcss.vendor;
+function unprefixed (prop) {
+    return prop.replace(/^-\w+-/, '');
+}
 
 export default function applyExpanded (css, opts) {
     css.walk(rule => {
