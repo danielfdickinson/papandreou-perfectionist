@@ -1,6 +1,6 @@
 {
   "name": "perfectionist-papandreou",
-  "version": "2.4.0",
+  "version": "2.4.0-patch1",
   "description": "Beautify CSS files.",
   "main": "dist/index.js",
   "bin": {
