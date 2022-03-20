@@ -76,7 +76,10 @@ export default function applyTransformFeatures (node, opts) {
 
         const parts = pair.number.split('.');
         let pre = parts[0];
-        let post = parts.slice(1).join('.');
+        let post = '.' + parts.slice(1).join('.');
+        if (post.length === 1) {
+            post = '';
+        }
 
         if (opts.trimLeadingZero === true && parts[1]) {
             pre = pre.replace(/^0+/, '');
