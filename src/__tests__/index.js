@@ -6,65 +6,77 @@ import plugin from '../';
 
 let base = path.join(__dirname, 'fixtures');
 
-function perfectionist (css, options) {
-    return plugin.process(css, options).css;
+function perfectionist (input, options, procoptions) {
+    if (!procoptions) {
+        procoptions = {from: undefined};
+    }
+    let result = postcss([plugin(options)]).process(input, procoptions);
+    return result.css;
 }
 
-let specs = fs.readdirSync(base).reduce((tests, css) => {
-    let [spec, style] = css.split('.');
-    if (!tests[spec]) {
-        tests[spec] = {};
+fs.readdir(base, {encoding: 'utf-8'}, specfiles => {
+    if (!specfiles) {
+        return;
     }
-    tests[spec][style] = fs.readFileSync(path.join(base, css), 'utf-8');
-    return tests;
-}, {});
-
-Object.keys(specs).forEach(name => {
-    let spec = specs[name];
-    ava(`fixture: ${name}`, t => {
-        t.plan(3);
-        Object.keys(spec).slice(0, 3).forEach(s => {
-            let result = perfectionist(spec.fixture, {format: s});
-            t.deepEqual(result, spec[s], `should output the expected result (${s})`);
+    let [spec, style] = specfiles.split('.');
+    fs.readFile(path.join(base, spec), {encoding: 'utf-8'}, fixture => {
+        ava(`fixture: ${spec}`, t => {
+            t.plan(3);
+            fs.readFile(path.join(base, specfiles), {encoding: 'utf-8'}, expected => {
+                t.deepEqual(perfectionist(fixture, {format: style}), expected, `should output the expected result (${style})`);
+            });
         });
     });
 });
 
-const scss = (css, format) => {
-    return plugin.process(css, {
-        format: format,
-        syntax: 'scss',
-    }).css;
-};
-
 ava('should handle single line comments', t => {
-    const input = 'h1{\n  // test \n  color: red;\n}\n';
-    t.deepEqual(scss(input, 'expanded'), 'h1 {\n    // test \n    color: red;\n}\n');
-    t.deepEqual(scss(input, 'compact'), 'h1 {/* test */ color: red; }\n');
-    t.deepEqual(scss(input, 'compressed'), 'h1{/* test */color:red}');
+    let lineinput = 'h1{\n  // test \n  color: red;\n}\n';
+    let expected = 'h1 {\n    // test \n    color: red;\n}\n';
+    let format = 'expanded';
+    let procoptions = {
+        from: undefined,
+        syntax: require('postcss-scss'),
+        parser: require('postcss-scss'),
+    };
+    t.deepEqual(perfectionist(lineinput, {format: format}, procoptions), expected, `should output the expected result (${format})`);
+    expected = 'h1 {/* test */ color: red; }\n';
+    format = 'compact';
+    t.deepEqual(perfectionist(lineinput, {format: format}, procoptions), expected, `should output the expected result (${format})`);
+    expected = 'h1{/* test */color:red}';
+    format = 'compressed';
+    t.deepEqual(perfectionist(lineinput, {format: format}, procoptions), expected, `should output the expected result (${format})`);
 });
 
 ava('should handle single line comments in @import', t => {
-    const css = 'a, a:visited {\n    //@include border-radius(5px);\n    @include transition(background-color 0.2s ease);\n}\n';
-    t.deepEqual(scss(css), css);
+    let procoptions = {
+        from: undefined,
+        syntax: require('postcss-scss'),
+        parser: require('postcss-scss'),
+    };
+    let linecss = 'a, a:visited {\n    //@include border-radius(5px);\n    @include transition(background-color 0.2s ease);\n}\n';
+    t.deepEqual(perfectionist(linecss, {}, procoptions), linecss, `should output the expected result (default expanded scss)`);
 });
 
-let ensureRed = postcss.plugin('ensure-red', () => {
-    return css => {
-        let rule = postcss.rule({selector: '*'});
-        rule.append(postcss.decl({
-            prop: 'color',
-            value: 'red',
-            important: true,
-        }));
-        css.append(rule);
+const ensureRed = () => {
+    return {
+        postcssPlugin: 'ensure-red',
+        postcssVersion: '8.2.14',
+        Declaration: {
+            color: decl => {
+                decl.value = 'red';
+            },
+        },
     };
+};
+
+ava("should make any color red", t => {
+    let css = postcss([ensureRed()]).process('h1 { color: blue }');
+    return t.deepEqual('h1 { color: red }', css.css);
 });
 
 function handleRaws (t, opts = {}) {
-    return postcss([ensureRed, plugin(opts)]).process('h1 { color: blue }').then(({css}) => {
-        t.falsy(!!~css.indexOf('undefined'));
-    });
+    let css = postcss([ensureRed(), plugin(opts)]).process('h1 { color: blue }');
+    t.falsy(!!~css.css.indexOf('undefined'));
 }
 
 ava('should handle declarations added without raw properties (default)', handleRaws);

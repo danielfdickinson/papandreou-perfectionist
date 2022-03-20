@@ -1,53 +1,60 @@
-import postcss from 'postcss';
 import applyCompact from './applyCompact';
 import applyCompressed from './applyCompressed';
 import applyExpanded from './applyExpanded';
 
-const perfectionist = postcss.plugin('perfectionist', opts => {
-    opts = {
-        format: 'expanded',
-        indentSize: 4,
-        indentChar: ' ',
-        maxAtRuleLength: 80,
-        maxSelectorLength: 80,
-        maxValueLength: 80,
-        trimLeadingZero: true,
-        trimTrailingZeros: true,
-        cascade: true,
-        colorCase: 'lower',
-        colorShorthand: true,
-        zeroLengthNoUnit: true,
-        ...opts,
+module.exports = (opts = {}) => {
+    opts.format = opts.format || 'expanded';
+    opts.indentSize = opts.indentSize || 4;
+    opts.indentChar = opts.indentChar || ' ';
+    opts.maxAtRuleLength = opts.maxAtRuleLength || 80;
+    opts.maxSelectorLength = opts.maxSelectorLength || 80;
+    opts.maxValueLength = opts.maxValueLength || 80;
+    opts.colorCase = opts.colorCase || 'lower';
+    if (opts.trimLeadingZero === null) {
+        opts.trimLeadingZero = true;
+    };
+    if (opts.trimTrailingZeros === null) {
+        opts.trimTrailingZeros = true;
+    };
+    if (opts.cascade === null) {
+        opts.cascade = true;
+    };
+    if (opts.colorShorthand === null) {
+        opts.colorShorthand = true;
+    };
+    if (opts.zeroLengthNoUnit === null) {
+        opts.zeroLengthNoUnit = true;
     };
 
-    return css => {
-        css.walk(node => {
-            if (node.raws.before) {
-                node.raws.before = node.raws.before.replace(/[;\s]/g, '');
-            }
-        });
-        switch (opts.format) {
-        case 'compact':
-            applyCompact(css, opts);
-            break;
-        case 'compressed':
-            applyCompressed(css, opts);
-            break;
-        case 'expanded':
-        default:
-            applyExpanded(css, opts);
-            break;
-        }
-    };
-});
-
-perfectionist.process = (css, opts = {}) => {
     opts.map = opts.map || (opts.sourcemap ? true : null);
     if (opts.syntax === 'scss') {
-        opts.syntax = require('postcss-scss');
-    }
-    let processor = postcss([ perfectionist(opts) ]);
-    return processor.process(css, opts);
+        throw 'Perfectionist now requires an SCSS syntax object in "opts" to use SCSS';
+    };
+
+    return {
+        postcssPlugin: 'perfectionist-dfd',
+        postcssVersion: '8.2.14',
+        Once (root) {
+            root.walk(node => {
+                if (node.raws.before) {
+                    node.raws.before = node.raws.before.replace(/[;\s]/g, '');
+                };
+            });
+            switch (opts.format) {
+            case 'compact':
+                applyCompact(root, opts);
+                break;
+            case 'compressed':
+                applyCompressed(root, opts);
+                break;
+            case 'expanded':
+            default:
+                applyExpanded(root, opts);
+                break;
+            }
+        },
+    };
 };
 
-export default perfectionist;
+module.exports.postcss = true;
+

@@ -1,10 +1,10 @@
 {
-  "name": "perfectionist-papandreou",
-  "version": "2.4.0-patch1",
+  "name": "perfectionist-dfd",
+  "version": "2.4.0-patch1-dfd1",
   "description": "Beautify CSS files.",
   "main": "dist/index.js",
   "bin": {
-    "perfectionist": "bin/cmd.js"
+    "perfectionist-dfd": "bin/cmd.js"
   },
   "files": [
     "bin",
@@ -27,20 +27,19 @@
     "pretty"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/ben-eb/perfectionist",
+  "homepage": "https://github.com/danielfdickinson/papandreou-perfectionist",
   "author": {
     "name": "Ben Briggs",
     "email": "beneb.info@gmail.com",
     "url": "http://beneb.info"
   },
-  "repository": "ben-eb/perfectionist",
+  "repository": "danielfdickinson/papandreou-perfectionist",
   "dependencies": {
     "comment-regex": "^1.0.0",
     "defined": "^1.0.0",
     "minimist": "^1.2.0",
     "postcss": "^8.4.12",
-    "postcss-scss": "^0.3.0",
-    "postcss-value-parser": "^3.3.0",
+    "postcss-value-parser": "^4.2.0",
     "read-file-stdin": "^0.2.0",
     "string.prototype.repeat": "^0.2.0",
     "vendors": "^1.0.0",
@@ -58,12 +57,13 @@
     "babel-register": "^6.9.0",
     "cross-env": "^2.0.0",
     "del-cli": "^0.2.0",
-    "eslint": "^3.0.0",
+    "eslint": "^8.11.0",
     "eslint-config-cssnano": "^3.0.0",
     "eslint-plugin-babel": "^3.3.0",
     "eslint-plugin-import": "^2.0.1",
     "execa": "^0.4.0",
-    "nyc": "^10.0.0"
+    "nyc": "^10.0.0",
+    "postcss-scss": "^4.0.3"
   },
   "ava": {
     "babel": "inherit",

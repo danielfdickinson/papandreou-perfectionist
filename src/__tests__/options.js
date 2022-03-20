@@ -1,4 +1,5 @@
 import ava from 'ava';
+import postcss from 'postcss';
 import plugin from '../';
 
 let tests = [{
@@ -48,12 +49,9 @@ let tests = [{
     options: {trimTrailingZeros: false},
 }];
 
-function perfectionist (css, options) {
-    return plugin.process(css, options).css;
-}
-
-ava('perfectionist options', (t) => {
-    tests.forEach(({fixture, expected, options}) => {
-        t.deepEqual(perfectionist(fixture, options || {}), expected);
+ava('perfectionist options', t => {
+    tests.forEach(({fixture, expected, options, message}) => {
+        let result = postcss([plugin(options || {})]).process(fixture, {from: undefined});
+        t.deepEqual(result.css, expected, message);
     });
 });
