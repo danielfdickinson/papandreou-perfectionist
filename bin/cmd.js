@@ -1,34 +1,45 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
-var perfectionist = require('../dist');
-var read = require('read-file-stdin');
-var write = require('write-file-stdout');
+const fs = require('fs');
+const {exit} = require('process');
+const postcss = require('postcss');
+const read = require('read-file-stdin');
+const write = require('write-file-stdout');
 
-var opts = require('minimist')(process.argv.slice(2), {
+const opts = require('minimist')(process.argv.slice(2), {
     alias: {
         f: 'format',
         h: 'help',
         s: 'sourcemap',
         t: 'syntax',
-        v: 'version'
-    }
+        v: 'version',
+    },
 });
 
+const perfectionist = require('../dist');
+
 if (opts.version) {
-    return console.log(require('../package.json').version);
+    exit(console.log(require('../package.json').version));
 }
 
-var file = opts._[0];
-var out  = opts._[1];
+let file = opts._[0];
+let out  = opts._[1];
 
 if (file === 'help' || opts.help) {
-    return fs.createReadStream(__dirname + '/usage.txt')
+    exit(fs.createReadStream(__dirname + '/usage.txt')
         .pipe(process.stdout)
-        .on('close', function () { process.exit(1); });
+        .on('close', () => {
+            process.exit(1);
+        }));
 }
 
-read(file, function (err, buf) {
+let procopts = {};
+
+if (opts.syntax === 'scss') {
+    procopts.syntax = require('postcss-scss');
+}
+
+read(file, (err, buf) => {
     if (err) {
         throw err;
     }
@@ -38,5 +49,5 @@ read(file, function (err, buf) {
     if (out) {
         opts.to = out;
     }
-    write(out, String(perfectionist.process(String(buf), opts)));
+    write(out, String(postcss([perfectionist(opts)]).process(String(buf), procopts)));
 });
