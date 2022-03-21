@@ -10,6 +10,8 @@ function perfectionist (input, options, procoptions) {
     if (!procoptions) {
         procoptions = {from: undefined};
     }
+    procoptions.map = options.map || (options.sourcemap ? true : null);
+
     let result = postcss([plugin(options)]).process(input, procoptions);
     return result.css;
 }
