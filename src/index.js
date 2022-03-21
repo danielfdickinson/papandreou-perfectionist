@@ -27,9 +27,6 @@ module.exports = (opts = {}) => {
     };
 
     opts.map = opts.map || (opts.sourcemap ? true : null);
-    if (opts.syntax === 'scss') {
-        throw 'Perfectionist now requires an SCSS syntax object in "opts" to use SCSS';
-    };
 
     return {
         postcssPlugin: 'perfectionist-dfd',
