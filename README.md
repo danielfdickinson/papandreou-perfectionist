@@ -1,13 +1,19 @@
-# perfectionist [![Build Status](https://travis-ci.org/ben-eb/perfectionist.svg?branch=master)][ci] [![NPM version](https://badge.fury.io/js/perfectionist.svg)][npm] [![Dependency Status](https://gemnasium.com/ben-eb/perfectionist.svg)][deps]
+# perfectionist-dfd
 
 > Beautify CSS files.
 
+## Status
+
+ [![Node.js CI](https://github.com/danielfdickinson/perfectionist-dfd/actions/workflows/nodejs.yml/badge.svg)](https://github.com/danielfdickinson/perfectionist-dfd/actions/workflows/nodejs.yml)
+
 ## Install
 
-With [npm](https://npmjs.org/package/perfectionist) do:
+FIXME: perfectionist-dfd not yet available from npmjs.org
 
-```
-npm install perfectionist --save
+With [npm](https://npmjs.org/package/perfectionist-dfd) do:
+
+```sh
+npm install perfectionist-dfd --save
 ```
 
 ## Example
@@ -41,7 +47,21 @@ h1{color:red}
 
 ## API
 
-### perfectionist.process(css, [options])
+### postcss plugin
+
+perfectionist-dfd can be consumed as a PostCSS plugin. See the
+[documentation](https://github.com/postcss/postcss#usage) for examples for
+your environment.
+
+FIXME: perfectionist-dfd not yet available from npmjs.org
+
+```javascript
+import perfectionistDFD from 'perfectionist-dfd';
+
+postcss([perfectionistDFD(options)]).process(css, processOptions);
+```
+
+### processOptions
 
 #### css
 
@@ -50,9 +70,46 @@ Type: `string`
 
 Pass a CSS string to beautify it.
 
-#### options
+#### sourcemap
 
-##### cascade
+Type: `boolean`
+Default: `false`
+
+Generate an inline sourcemap with the transformed CSS.
+
+#### syntax
+
+Type: `object`
+Default: `undefined`
+
+Specify the [postcss-scss](https://github.com/postcss/postcss-scss) plugin if you wish to parse/format SCSS files.
+
+```javascript
+import perfectionistDFD from 'perfectionist-dfd';
+
+postcssSCSS = require('postcss-scss');
+
+postcss([perfectionistDFD(options)]).process(css, {syntax: postcssSCSS});
+```
+
+#### parser
+
+Type: `object`
+Default: `undefined`
+
+Specify the [postcss-scss](https://github.com/postcss/postcss-scss) plugin if you would like to format SCSS-style single line comments.
+
+```javascript
+import perfectionistDFD from 'perfectionist-dfd';
+
+postcssSCSS = require('postcss-scss');
+
+postcss([perfectionistDFD(options)]).process(css, {parser: postcssSCSS});
+```
+
+### options
+
+#### cascade
 
 Type: `boolean`
 Default: `true`
@@ -74,7 +131,7 @@ h1 {
 }
 ```
 
-##### colorCase
+#### colorCase
 
 Type: `string`
 Default: `lower`
@@ -89,7 +146,7 @@ p { color: #C8C8C8 }
 p { color: #c8c8c8 }
 ```
 
-##### colorShorthand
+#### colorShorthand
 
 Type: `boolean`
 Default: `true`
@@ -104,7 +161,7 @@ p { color: #fff }
 p { color: #ffffff }
 ```
 
-##### format
+#### format
 
 Type: `string`
 Default: `expanded`
@@ -113,14 +170,14 @@ Pass either `expanded`, `compact` or `compressed`. Note that the `compressed`
 format only facilitates simple whitespace compression around selectors &
 declarations. For more powerful compression, see [cssnano].
 
-##### indentChar
+#### indentChar
 
 Type: `string`
-Default: ` ` (space)
+Default: ' ' (space)
 
 Specify `\t` here instead if you would like to use tabs for indentation.
 
-##### indentSize
+#### indentSize
 
 Type: `number`
 Default: `4`
@@ -128,7 +185,7 @@ Default: `4`
 This number will be used as a basis for all indent levels, using the `expanded`
 format.
 
-##### trimLeadingZero
+#### trimLeadingZero
 
 Type: `boolean`
 Default: `true`
@@ -143,7 +200,7 @@ p { line-height: .8 }
 p { line-height: 0.8 }
 ```
 
-##### trimTrailingZeros
+#### trimTrailingZeros
 
 Type: `boolean`
 Default: `true`
@@ -158,7 +215,7 @@ div { top: 50px }
 div { top: 50.000px }
 ```
 
-##### maxAtRuleLength
+#### maxAtRuleLength
 
 Type: `boolean|number`
 Default: `80`
@@ -168,7 +225,7 @@ they exceed this, they will be split up over multiple lines. If false, this
 behaviour will not be performed. Note that this transform only applies to
 the `expanded` format.
 
-##### maxSelectorLength
+#### maxSelectorLength
 
 Type: `boolean|number`
 Default: `80`
@@ -178,7 +235,7 @@ it exceeds this, it will be split up over multiple lines. If false, this
 behaviour will not be performed. Note that this transform is excluded from the
 `compressed` format.
 
-##### maxValueLength
+#### maxValueLength
 
 Type: `boolean|number`
 Default: `80`
@@ -187,20 +244,6 @@ If set to a positive integer, set a maximum width for a property value; if
 it exceeds this, it will be split up over multiple lines. If false, this
 behaviour will not be performed. Note that this transform only applies to
 the `expanded` format.
-
-##### sourcemap
-
-Type: `boolean`
-Default: `false`
-
-Generate a sourcemap with the transformed CSS.
-
-##### syntax
-
-Type: `string`
-
-Specify `scss` if you would like to also format SCSS-style single line comments.
-This loads the [postcss-scss](https://github.com/postcss/postcss-scss) plugin.
 
 ##### zeroLengthNoUnit
 
@@ -217,18 +260,12 @@ div { padding: 0 }
 div { padding: 0px }
 ```
 
-### `postcss([ perfectionist(opts) ])`
-
-perfectionist can also be consumed as a PostCSS plugin. See the
-[documentation](https://github.com/postcss/postcss#usage) for examples for
-your environment.
-
 ### CLI
 
 perfectionist also ships with a CLI app. To see the available options, just run:
 
 ```sh
-$ perfectionist --help
+perfectionist --help
 ```
 
 ## Usage
@@ -236,22 +273,15 @@ $ perfectionist --help
 See the [PostCSS documentation](https://github.com/postcss/postcss#usage) for
 examples for your environment.
 
-## Integrations
-
-- [Sublime Text plugin](https://github.com/yisibl/sublime-perfectionist)
-- [Atom plugin](https://github.com/sindresorhus/atom-perfectionist)
-
 ## Contributing
 
 Pull requests are welcome. If you add functionality, then please add unit tests
 to cover it.
 
+## Acknowledgements
+
+Thank you to [Ben Briggs](http://beneb.info) for [the original perfectionist](https://github.com/ben-eb/perfectionist).
+
 ## License
 
-MIT © [Ben Briggs](http://beneb.info)
-
-[ci]:      https://travis-ci.org/ben-eb/perfectionist
-[cssnano]: https://github.com/ben-eb/cssnano
-[deps]:    https://gemnasium.com/ben-eb/perfectionist
-[npm]:     http://badge.fury.io/js/perfectionist
-[postcss]: https://github.com/postcss/postcss
+MIT © [Ben Briggs](http://beneb.info) and [Daniel F. Dickinson](https://www.wildtechgarden.ca/about/)
