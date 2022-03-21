@@ -39,6 +39,8 @@ if (opts.syntax === 'scss') {
     procopts.syntax = require('postcss-scss');
 }
 
+procopts.map = opts.map || (opts.sourcemap ? true : null);
+
 read(file, (err, buf) => {
     if (err) {
         throw err;
