@@ -1,13 +1,13 @@
-# perfectionist [![Build Status](https://travis-ci.org/ben-eb/perfectionist.svg?branch=master)][ci] [![NPM version](https://badge.fury.io/js/perfectionist.svg)][npm] [![Dependency Status](https://gemnasium.com/ben-eb/perfectionist.svg)][deps]
+# perfectionist-dfd
 
-> Beautify CSS files.
+Beautify CSS files. Fork of a fork of an archived project.
 
 ## Install
 
-With [npm](https://npmjs.org/package/perfectionist) do:
+With [npm](https://npmjs.org/package/perfectionist-dfd) do:
 
-```
-npm install perfectionist --save
+```sh
+npm install perfectionist-dfd --save
 ```
 
 ## Example
@@ -41,7 +41,7 @@ h1{color:red}
 
 ## API
 
-### perfectionist.process(css, [options])
+### perfectionistDFD.process(css, [options])
 
 #### css
 
@@ -116,7 +116,7 @@ declarations. For more powerful compression, see [cssnano].
 ##### indentChar
 
 Type: `string`
-Default: ` ` (space)
+Default: ' ' (space)
 
 Specify `\t` here instead if you would like to use tabs for indentation.
 
@@ -148,7 +148,7 @@ p { line-height: 0.8 }
 Type: `boolean`
 Default: `true`
 
-Set this to `true` to traim trailing zeros in numbers.
+Set this to `true` to trim trailing zeros in numbers.
 
 ```css
 /* true */
@@ -217,7 +217,7 @@ div { padding: 0 }
 div { padding: 0px }
 ```
 
-### `postcss([ perfectionist(opts) ])`
+### `postcss([ perfectionistDFD(opts) ])`
 
 perfectionist can also be consumed as a PostCSS plugin. See the
 [documentation](https://github.com/postcss/postcss#usage) for examples for
@@ -228,18 +228,13 @@ your environment.
 perfectionist also ships with a CLI app. To see the available options, just run:
 
 ```sh
-$ perfectionist --help
+perfectionist-dfd --help
 ```
 
 ## Usage
 
 See the [PostCSS documentation](https://github.com/postcss/postcss#usage) for
 examples for your environment.
-
-## Integrations
-
-- [Sublime Text plugin](https://github.com/yisibl/sublime-perfectionist)
-- [Atom plugin](https://github.com/sindresorhus/atom-perfectionist)
 
 ## Contributing
 
@@ -248,10 +243,5 @@ to cover it.
 
 ## License
 
-MIT © [Ben Briggs](http://beneb.info)
-
-[ci]:      https://travis-ci.org/ben-eb/perfectionist
-[cssnano]: https://github.com/ben-eb/cssnano
-[deps]:    https://gemnasium.com/ben-eb/perfectionist
-[npm]:     http://badge.fury.io/js/perfectionist
-[postcss]: https://github.com/postcss/postcss
+MIT © [Ben Briggs](http://beneb.info) \
+MIT © [Daniel F. Dickinson](https://www.wildtechgarden.ca/danielfdickinson/)

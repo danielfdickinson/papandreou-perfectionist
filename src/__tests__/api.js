@@ -1,6 +1,6 @@
 import postcss from 'postcss';
 import ava from 'ava';
-import perfectionist from '../';
+import perfectionistDFD from '../';
 import {name} from '../../package.json';
 
 function usage (t, instance) {
@@ -10,11 +10,11 @@ function usage (t, instance) {
     });
 }
 
-ava('can be used as a postcss plugin', usage, postcss().use(perfectionist()));
-ava('can be used as a postcss plugin (2)', usage, postcss([ perfectionist() ]));
-ava('can be used as a postcss plugin (3)', usage, postcss([ perfectionist ]));
+ava('can be used as a postcss plugin', usage, postcss().use(perfectionistDFD()));
+ava('can be used as a postcss plugin (2)', usage, postcss([ perfectionistDFD() ]));
+ava('can be used as a postcss plugin (3)', usage, postcss([ perfectionistDFD ]));
 
 ava('should use the postcss plugin api', t => {
-    t.truthy(perfectionist().postcssVersion, 'should be able to access version');
-    t.deepEqual(perfectionist().postcssPlugin, name, 'should be able to access name');
+    t.truthy(perfectionistDFD().postcssVersion, 'should be able to access version');
+    t.deepEqual(perfectionistDFD().postcssPlugin, name, 'should be able to access name');
 });

@@ -48,12 +48,12 @@ let tests = [{
     options: {trimTrailingZeros: false},
 }];
 
-function perfectionist (css, options) {
+function perfectionistDFD (css, options) {
     return plugin.process(css, options).css;
 }
 
-ava('perfectionist options', (t) => {
+ava('perfectionistDFD options', (t) => {
     tests.forEach(({fixture, expected, options}) => {
-        t.deepEqual(perfectionist(fixture, options || {}), expected);
+        t.deepEqual(perfectionistDFD(fixture, options || {}), expected);
     });
 });

@@ -6,7 +6,7 @@ import plugin from '../';
 
 let base = path.join(__dirname, 'fixtures');
 
-function perfectionist (css, options) {
+function perfectionistDFD (css, options) {
     return plugin.process(css, options).css;
 }
 
@@ -24,7 +24,7 @@ Object.keys(specs).forEach(name => {
     ava(`fixture: ${name}`, t => {
         t.plan(3);
         Object.keys(spec).slice(0, 3).forEach(s => {
-            let result = perfectionist(spec.fixture, {format: s});
+            let result = perfectionistDFD(spec.fixture, {format: s});
             t.deepEqual(result, spec[s], `should output the expected result (${s})`);
         });
     });

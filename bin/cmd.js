@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var fs = require('fs');
-var perfectionist = require('../dist');
+var perfectionistDFD = require('../dist');
 var read = require('read-file-stdin');
 var write = require('write-file-stdout');
 
@@ -38,5 +38,5 @@ read(file, function (err, buf) {
     if (out) {
         opts.to = out;
     }
-    write(out, String(perfectionist.process(String(buf), opts)));
+    write(out, String(perfectionistDFD.process(String(buf), opts)));
 });

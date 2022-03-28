@@ -3,7 +3,7 @@ import applyCompact from './applyCompact';
 import applyCompressed from './applyCompressed';
 import applyExpanded from './applyExpanded';
 
-const perfectionist = postcss.plugin('perfectionist', opts => {
+const perfectionistDFD = postcss.plugin('perfectionist-dfd', opts => {
     opts = {
         format: 'expanded',
         indentSize: 4,
@@ -41,7 +41,7 @@ const perfectionist = postcss.plugin('perfectionist', opts => {
     };
 });
 
-perfectionist.process = (css, opts = {}) => {
+perfectionistDFD.process = (css, opts = {}) => {
     opts.map = opts.map || (opts.sourcemap ? true : null);
     if (opts.syntax === 'scss') {
         opts.syntax = require('postcss-scss');
@@ -50,4 +50,4 @@ perfectionist.process = (css, opts = {}) => {
     return processor.process(css, opts);
 };
 
-export default perfectionist;
+export default perfectionistDFD;
