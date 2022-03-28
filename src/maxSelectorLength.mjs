@@ -1,6 +1,6 @@
 import {list} from 'postcss';
-import space from './space';
-import getIndent from './getIndent';
+import space from './space.mjs';
+import getIndent from './getIndent.mjs';
 
 function splitProperty (rule, prop, opts) {
     const {breakEvery, reindent, reduce, max} = {

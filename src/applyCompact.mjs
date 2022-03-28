@@ -1,12 +1,12 @@
-import {block as commentRegex} from 'comment-regex';
+import { blockCommentRegex as commentRegex } from 'comment-regex';
 import valueParser from 'postcss-value-parser';
-import applyTransformFeatures from './applyTransformFeatures';
-import blank from './blank';
-import deeplyNested from './deeplyNested';
-import getIndent from './getIndent';
-import isSassVariable from './isSassVariable';
-import {maxSelectorLength} from './maxSelectorLength';
-import walk from './walk';
+import applyTransformFeatures from './applyTransformFeatures.mjs';
+import blank from './blank.mjs';
+import deeplyNested from './deeplyNested.mjs';
+import getIndent from './getIndent.mjs';
+import isSassVariable from './isSassVariable.mjs';
+import {maxSelectorLength} from './maxSelectorLength.mjs';
+import walk from './walk.mjs';
 
 export default function applyCompact (css, opts) {
     css.walk(rule => {

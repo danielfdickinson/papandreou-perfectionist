@@ -2,9 +2,12 @@ import path from 'path';
 import fs from 'fs';
 import ava from 'ava';
 import postcss from 'postcss';
-import plugin from '../';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import plugin from '../index.mjs';
 
-let base = path.join(__dirname, 'fixtures');
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const base = path.resolve(path.join(__dirname,'./fixtures'));
 
 function perfectionistDFD (css, options) {
     return plugin.process(css, options).css;

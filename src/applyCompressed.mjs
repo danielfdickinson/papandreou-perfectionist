@@ -1,8 +1,8 @@
-import {block as commentRegex} from 'comment-regex';
+import { blockCommentRegex as commentRegex } from 'comment-regex';
 import valueParser from 'postcss-value-parser';
-import applyTransformFeatures from './applyTransformFeatures';
-import isSassVariable from './isSassVariable';
-import walk from './walk';
+import applyTransformFeatures from './applyTransformFeatures.mjs';
+import isSassVariable from './isSassVariable.mjs';
+import walk from './walk.mjs';
 
 export default function applyCompressed (css, opts) {
     css.walk(rule => {

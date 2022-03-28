@@ -1,15 +1,15 @@
 import valueParser from 'postcss-value-parser';
-import {block as commentRegex} from 'comment-regex';
-import applyTransformFeatures from './applyTransformFeatures';
-import blank from './blank';
-import getIndent from './getIndent';
-import isSassVariable from './isSassVariable';
-import longest from './longest';
-import {maxAtRuleLength, maxSelectorLength, maxValueLength} from './maxSelectorLength';
-import prefixedDecls from './prefixedDecls';
-import space from './space';
-import sameLine from './sameLine';
-import walk from './walk';
+import { blockCommentRegex as commentRegex } from 'comment-regex';
+import applyTransformFeatures from './applyTransformFeatures.mjs';
+import blank from './blank.mjs';
+import getIndent from './getIndent.mjs';
+import isSassVariable from './isSassVariable.mjs';
+import longest from './longest.mjs';
+import {maxAtRuleLength, maxSelectorLength, maxValueLength} from './maxSelectorLength.mjs';
+import prefixedDecls from './prefixedDecls.mjs';
+import space from './space.mjs';
+import sameLine from './sameLine.mjs';
+import walk from './walk.mjs';
 
 function unprefixed (prop) {
     return prop.replace(/^-\w+-/, '');

@@ -1,7 +1,10 @@
 import postcss from 'postcss';
-import applyCompact from './applyCompact';
-import applyCompressed from './applyCompressed';
-import applyExpanded from './applyExpanded';
+import { createRequire } from 'module';
+import applyCompact from './applyCompact.mjs';
+import applyCompressed from './applyCompressed.mjs';
+import applyExpanded from './applyExpanded.mjs';
+
+const requireShim = createRequire(import.meta.url);
 
 const perfectionistDFD = postcss.plugin('perfectionist-dfd', opts => {
     opts = {
@@ -44,7 +47,7 @@ const perfectionistDFD = postcss.plugin('perfectionist-dfd', opts => {
 perfectionistDFD.process = (css, opts = {}) => {
     opts.map = opts.map || (opts.sourcemap ? true : null);
     if (opts.syntax === 'scss') {
-        opts.syntax = require('postcss-scss');
+        opts.syntax = requireShim('postcss-scss');
     }
     let processor = postcss([ perfectionistDFD(opts) ]);
     return processor.process(css, opts);

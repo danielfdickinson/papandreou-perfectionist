@@ -1,7 +1,10 @@
 import postcss from 'postcss';
 import ava from 'ava';
-import perfectionistDFD from '../';
-import {name} from '../../package.json';
+import perfectionistDFD from '../index.mjs';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const pkg = require('../../package.json');
 
 function usage (t, instance) {
     const input = 'h1 { color: #fff }';
@@ -16,5 +19,5 @@ ava('can be used as a postcss plugin (3)', usage, postcss([ perfectionistDFD ]))
 
 ava('should use the postcss plugin api', t => {
     t.truthy(perfectionistDFD().postcssVersion, 'should be able to access version');
-    t.deepEqual(perfectionistDFD().postcssPlugin, name, 'should be able to access name');
+    t.deepEqual(perfectionistDFD().postcssPlugin, pkg.name, 'should be able to access name');
 });

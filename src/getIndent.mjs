@@ -1,4 +1,4 @@
-import space from './space';
+import space from './space.mjs';
 
 export default function getIndent (node, indent = ' ', base = 4) {
     let level = 0;

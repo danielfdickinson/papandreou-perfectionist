@@ -1,4 +1,6 @@
-import {unit} from 'postcss-value-parser';
+import valueParser from 'postcss-value-parser';
+
+const unit = valueParser.unit;
 
 function isHex (node) {
     if (node.value[0] !== '#') {
@@ -29,7 +31,7 @@ function toLonghand (hex) {
     const g = hex[2];
     const b = hex[3];
     return '#' + r + r + g + g + b + b;
-};
+}
 
 const lengths = [
     'px',
