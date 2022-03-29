@@ -5,7 +5,7 @@
   "type": "commonjs",
   "main": "dist/perfectionist-dfd.min.js",
   "bin": {
-    "perfectionist": "bin/cmd.js"
+    "perfectionist-dfd": "bin/cmd.js"
   },
   "files": [
     "bin",
