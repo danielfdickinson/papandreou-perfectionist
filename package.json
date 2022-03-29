@@ -10,6 +10,7 @@
   "files": [
     "bin/",
     "dist/",
+    "CHANGELOG.md",
     "LICENSE",
     "README.md"
   ],
