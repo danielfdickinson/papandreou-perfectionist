@@ -71,12 +71,15 @@
     ]
   },
   "c8": {
-    "src": "src",
+    "all": true,
     "exclude": [
       "node_modules",
       "**/__tests__/",
       "dist/**"
     ],
-    "all": true
+    "reporter": [
+      "lcov"
+    ],
+    "src": "src"
   }
 }
