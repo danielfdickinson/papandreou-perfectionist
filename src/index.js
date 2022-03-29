@@ -46,7 +46,7 @@ perfectionistDFD.process = (css, opts = {}) => {
     if (opts.syntax === 'scss') {
         opts.syntax = require('postcss-scss');
     }
-    let processor = postcss([ perfectionist(opts) ]);
+    let processor = postcss([ perfectionistDFD(opts) ]);
     return processor.process(css, opts);
 };
 
