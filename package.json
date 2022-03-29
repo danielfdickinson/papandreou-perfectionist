@@ -8,8 +8,8 @@
     "perfectionist-dfd": "bin/cmd.js"
   },
   "files": [
-    "bin",
-    "dist",
+    "bin/",
+    "dist/",
     "LICENSE",
     "README.md"
   ],
