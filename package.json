@@ -14,9 +14,14 @@
     "README.md"
   ],
   "scripts": {
-    "pretest": "eslint src --ext .mjs --ext .js",
+    "coverage": "rollup -c && cross-env NODE_ENV=test c8 ava",
+    "lint": "eslint src --ext .mjs --ext .js",
     "prepublish": "del-cli dist && rollup -c",
+    "pretest": "npm run lint",
     "preversion": "cpy --flat --rename=CHANGELOG.md .changelog-header.md . && offline-github-changelog --next=${npm_package_version} >> CHANGELOG.md && git add CHANGELOG.md",
+    "report": "c8 report -o ./coverage --reporter=text >./coverage/text-report.txt && c8 report -o ./coverage --reporter=lcov",
+    "test": "rollup -c && cross-env NODE_ENV=test ava",
+    "test:ci": "npm run coverage"
   },
   "keywords": [
     "beautify",
