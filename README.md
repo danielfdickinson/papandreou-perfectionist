@@ -2,6 +2,10 @@
 
 Beautify CSS files. Fork of a fork of an archived project.
 
+## Status
+
+[![CI](https://github.com/danielfdickinson/perfectionist-dfd/actions/workflows/ci.yml/badge.svg)](https://github.com/danielfdickinson/perfectionist-dfd/actions/workflows/ci.yml)
+
 ## Install
 
 With [npm](https://npmjs.org/package/perfectionist-dfd) do:
