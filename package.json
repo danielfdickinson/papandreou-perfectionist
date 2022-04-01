@@ -17,7 +17,7 @@
   "scripts": {
     "coverage": "rollup -c && cross-env NODE_ENV=test c8 ava",
     "lint": "eslint src --ext .mjs --ext .js",
-    "prepublish": "del-cli dist && rollup -c",
+    "prepublishOnly": "del-cli dist && rollup -c",
     "pretest": "npm run lint",
     "pretest:ci": "npm run lint",
     "preversion": "cpy --flat --rename=CHANGELOG.md .changelog-header.md . && offline-github-changelog --next=${npm_package_version} >> CHANGELOG.md && git add CHANGELOG.md",
