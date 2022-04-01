@@ -29,9 +29,9 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm run test:ci
-    - if: matrix.node-version == 16.x
+    - if: matrix.node-version == "16.x"
       run: mkdir packdir && npm pack --pack-destination packdir
-    - if: matrix.node-version == 16.x
+    - if: matrix.node-version == "16.x"
       name: Upload package as artifact
       uses: actions/upload-artifact@v3
       with:
