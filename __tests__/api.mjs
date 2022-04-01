@@ -1,10 +1,10 @@
 import postcss from 'postcss';
 import ava from 'ava';
-import perfectionistDFD from '../index.mjs';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
-const pkg = require('../../package.json');
+const perfectionistDFD = require('..');
+const pkg = require('../package.json');
 
 function usage (t, instance) {
     const input = 'h1 { color: #fff }';

@@ -9,7 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const fixture = path.resolve(path.join(__dirname, './fixtures/nested.fixture.css'));
 
 function setup (args) {
-    return execa(path.resolve(path.join(__dirname, '../../bin/cmd.js')), args, {stripEof: false, cwd: __dirname, stripFinalNewline: false});
+    return execa(path.resolve(path.join(__dirname, '../bin/cmd.js')), args, {stripEof: false, cwd: __dirname, stripFinalNewline: false});
 }
 
 ava('cli: defaults', t => {
