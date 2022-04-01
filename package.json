@@ -23,7 +23,8 @@
     "preversion": "cpy --flat --rename=CHANGELOG.md .changelog-header.md . && offline-github-changelog --next=${npm_package_version} >> CHANGELOG.md && git add CHANGELOG.md",
     "report": "c8 report -o ./coverage --reporter=text >./coverage/text-report.txt && c8 report -o ./coverage --reporter=lcov",
     "test": "rollup -c && cross-env NODE_ENV=test ava",
-    "test:ci": "npm run coverage"
+    "test:ci": "npm run coverage",
+    "test:oldci": "cross-env NODE_ENV=test ava"
   },
   "keywords": [
     "beautify",
@@ -70,8 +71,8 @@
   },
   "ava": {
     "files": [
-      "src/__tests__/*",
-      "!src/__tests__/fixtures"
+      "__tests__/*",
+      "!__tests__/fixtures"
     ],
     "nodeArguments": [
       "--trace-deprecation"
@@ -81,7 +82,7 @@
     "all": true,
     "exclude": [
       "node_modules",
-      "**/__tests__/",
+      "__tests__/**",
       "dist/**"
     ],
     "reporter": [

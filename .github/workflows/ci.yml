@@ -18,24 +18,48 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        node-version: [16.x, 17.x]
+        node-version: ['16', '17']
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
     - run: npm run test:ci
-    - run: mkdir packdir && npm pack --pack-destination packdir
-      if: matrix.node-version == '16.x'
+    - run: mkdir packdir && cp -r __tests__ packdir && npm pack --pack-destination packdir
+      if: matrix.node-version == '16'
     - name: Upload package as artifact
-      if: matrix.node-version == '16.x'
+      if: matrix.node-version == '16'
       uses: actions/upload-artifact@v3
       with:
         if-no-files-found: error
-        name: perfectionist-dfd-${{ matrix.node-version }}.tgz
-        path: packdir/*
+        name: perfectionist-dfd-${{ matrix.node-version }}
+        path: packdir
         retention-days: 1
+  test-oldnode:
+    needs: build-and-test
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node-version: ['12', '14']
+    steps:
+    - name: Get perfectionist-dfd Artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: perfectionist-dfd-16
+        path: .
+    - name: Extract perfectionist-dfd package
+      run: tar --strip-components=1 -xf perfectionist-dfd-*.tgz
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm install
+    - run: npm install ava execa cross-env
+#    - name: Copy test to root dir
+#      run: cp -r perfectionist-dfd/packdir/__tests_ .
+    - name: Run tests using Old Node (${{ matrix.node-version }})
+      run: npm run test:oldci
