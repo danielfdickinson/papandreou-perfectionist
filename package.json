@@ -30,6 +30,7 @@
     "beautify",
     "css",
     "format",
+    "normalize",
     "postcss",
     "postcss-plugin",
     "pretty"
@@ -80,7 +81,8 @@
       "node_modules",
       "__tests__/**",
       "__tests-oldnode/**",
-      "dist/**"
+      "dist/**",
+      "out-test"
     ],
     "reporter": [
       "lcov"
