@@ -29,7 +29,7 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm run test:ci
-    - run: mkdir packdir && cp -r __tests__ packdir && npm pack --pack-destination packdir
+    - run: mkdir packdir && cp -r __tests-oldnode__ __tests__ packdir && npm pack --pack-destination packdir
       if: matrix.node-version == '16'
     - name: Upload package as artifact
       if: matrix.node-version == '16'

@@ -1,5 +1,8 @@
 import ava from 'ava';
-import plugin from '../src/index.mjs';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const plugin = require('..');
 
 let tests = [{
     message: 'should have a configurable indent size',

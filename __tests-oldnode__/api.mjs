@@ -1,9 +1,9 @@
 import postcss from 'postcss';
 import ava from 'ava';
 import { createRequire } from 'module';
-import perfectionistDFD from '../src/index.mjs';
 
 const require = createRequire(import.meta.url);
+const perfectionistDFD = require('..');
 const pkg = require('../package.json');
 
 function usage (t, instance) {

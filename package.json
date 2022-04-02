@@ -15,16 +15,16 @@
     "README.md"
   ],
   "scripts": {
-    "coverage": "rollup -c && cross-env NODE_ENV=test c8 ava",
+    "coverage": "rollup -c && cross-env NODE_ENV=test c8 ava ./__tests__/*.mjs",
     "lint": "eslint src --ext .mjs --ext .js",
     "prepublishOnly": "del-cli dist && rollup -c",
     "pretest": "npm run lint",
     "pretest:ci": "npm run lint",
     "preversion": "cpy --flat --rename=CHANGELOG.md .changelog-header.md . && offline-github-changelog --next=${npm_package_version} >> CHANGELOG.md && git add CHANGELOG.md",
     "report": "c8 report -o ./coverage --reporter=text >./coverage/text-report.txt && c8 report -o ./coverage --reporter=lcov",
-    "test": "rollup -c && cross-env NODE_ENV=test ava",
+    "test": "rollup -c && cross-env NODE_ENV=test ava ./__tests__/*.mjs",
     "test:ci": "npm run coverage",
-    "test:oldci": "cross-env NODE_ENV=test ava"
+    "test:oldci": "cross-env NODE_ENV=test ava ./__tests-oldnode__/*.mjs"
   },
   "keywords": [
     "beautify",
@@ -70,10 +70,6 @@
     "vendors": "^2.0.1"
   },
   "ava": {
-    "files": [
-      "__tests__/*",
-      "!__tests__/fixtures"
-    ],
     "nodeArguments": [
       "--trace-deprecation"
     ]
@@ -83,6 +79,7 @@
     "exclude": [
       "node_modules",
       "__tests__/**",
+      "__tests-oldnode/**",
       "dist/**"
     ],
     "reporter": [
