@@ -247,5 +247,5 @@ to cover it.
 
 ## License
 
-MIT © [Ben Briggs](http://beneb.info) \
-MIT © [Daniel F. Dickinson](https://www.wildtechgarden.ca/danielfdickinson/)
+MIT © 2015 [Ben Briggs](http://beneb.info) \
+MIT © 2022 [Daniel F. Dickinson](https://www.wildtechgarden.ca/danielfdickinson/)
