@@ -2,14 +2,14 @@
 
 ## From git log
 
-### v2.4.2-beta.1 (2022-04-02)
+### v2.4.2-beta.2 (2022-04-02)
 
-- [Separate oldci ava tests from current node ci](https://github.com/danielfdickinson/perfectionist-dfd/commit/617f24d2a4a926753880313dc6e583f36876ed85) ([Daniel F. Dickinson](mailto:dfdpublic@wildtechgarden.ca))
-- [Add Coveralls.io upload](https://github.com/danielfdickinson/perfectionist-dfd/commit/6f27ac9ad0870532f01d0c12508729a3de803022) ([Daniel F. Dickinson](mailto:dfdpublic@wildtechgarden.ca))
-- [Fix deprecated prepublish breaks oldci](https://github.com/danielfdickinson/perfectionist-dfd/commit/a35cd7a7e6dd3c21c71c17565d8c2eeb0f1a5d1a) ([Daniel F. Dickinson](mailto:dfdpublic@wildtechgarden.ca))
-- [Add testing with old node \(12.x and 14.x\)](https://github.com/danielfdickinson/perfectionist-dfd/commit/97beadad6fe5593ded5107de7f4d1b92e59655df) ([Daniel F. Dickinson](mailto:dfdpublic@wildtechgarden.ca))
-- [Move tests to top-level instead of under src](https://github.com/danielfdickinson/perfectionist-dfd/commit/143dceaa6d3275e8ff182922fd54d5c659c752ef) ([Daniel F. Dickinson](mailto:dfdpublic@wildtechgarden.ca))
-- [+19 more](https://github.com/danielfdickinson/perfectionist-dfd/compare/v2.4.1...v2.4.2-beta.1)
+- [Add cli version and help parameter tests](https://github.com/danielfdickinson/perfectionist-dfd/commit/2c8e129884b2d0b80442b0549cef420441d219cc) ([Daniel F. Dickinson](mailto:dfdpublic@wildtechgarden.ca))
+- [Don't exit with error on help request](https://github.com/danielfdickinson/perfectionist-dfd/commit/e2b127a591451d4f13a255d9b7ef1366540d758c) ([Daniel F. Dickinson](mailto:dfdpublic@wildtechgarden.ca))
+- [Fix typo in README](https://github.com/danielfdickinson/perfectionist-dfd/commit/78d7bef148f599856d8ef5c73141157fb36d335d) ([Daniel F. Dickinson](mailto:dfdpublic@wildtechgarden.ca))
+- [Update package versions](https://github.com/danielfdickinson/perfectionist-dfd/commit/71ca666608b216f52a2c47fdb42fc85f62e38800) ([Daniel F. Dickinson](mailto:dfdpublic@wildtechgarden.ca))
+- [Add to-do items for package](https://github.com/danielfdickinson/perfectionist-dfd/commit/69a6de378ae07cbf0968c7d0ffd719e4dea9ee98) ([Daniel F. Dickinson](mailto:dfdpublic@wildtechgarden.ca))
+- [+29 more](https://github.com/danielfdickinson/perfectionist-dfd/compare/v2.4.1...v2.4.2-beta.2)
 
 ### v2.4.1 (2022-04-01)
 
@@ -49,7 +49,7 @@
 
 - [#33](https://github.com/danielfdickinson/perfectionist-dfd/pull/33) Update ava to version 0.16.0 🚀 ([greenkeeperio-bot](mailto:support@greenkeeper.io))
 
-#### Commits to main
+#### Commits to pr-tweaks-cleanup-and-enhancements
 
 - [Update changelog.](https://github.com/danielfdickinson/perfectionist-dfd/commit/d3515b27a2dca53193963626e1a0f42d41b74435) ([Ben Briggs](mailto:beneb.info@gmail.com))
 - [Add options which format hex colours.](https://github.com/danielfdickinson/perfectionist-dfd/commit/ddef43b9841f9162e3c495263894f7cd9fa1acea) ([Ivan Sosnin](mailto:vansosnin@gmail.com))
@@ -69,7 +69,7 @@
 
 - [#25](https://github.com/danielfdickinson/perfectionist-dfd/pull/25) Ignore commas inside quotes. Fixes \#24 ([Rob Garrison](mailto:wowmotty@gmail.com))
 
-#### Commits to main
+#### Commits to pr-tweaks-cleanup-and-enhancements
 
 - [Update changelog.](https://github.com/danielfdickinson/perfectionist-dfd/commit/6d449e68f7e97e9f342186a2452c8a4c2e149960) ([Ben Briggs](mailto:beneb.info@gmail.com))
 - [Update CI environment and babel.](https://github.com/danielfdickinson/perfectionist-dfd/commit/56aaf727eb59610412d7c8b1daead8b20a923899) ([Ben Briggs](mailto:beneb.info@gmail.com))
@@ -92,7 +92,7 @@
 
 - [#20](https://github.com/danielfdickinson/perfectionist-dfd/pull/20) add Atom plugin to readme ([Sindre Sorhus](mailto:sindresorhus@gmail.com))
 
-#### Commits to main
+#### Commits to pr-tweaks-cleanup-and-enhancements
 
 - [Update changelog.](https://github.com/danielfdickinson/perfectionist-dfd/commit/5aba30360372c1ef0eb41ed11ccf0690451f69c1) ([Ben Briggs](mailto:beneb.info@gmail.com))
 - [Add scss syntax. Fixes \#15.](https://github.com/danielfdickinson/perfectionist-dfd/commit/9571fe70dd35e6ac1c58288474cc80179e400c7b) ([Ben Briggs](mailto:beneb.info@gmail.com))
@@ -106,7 +106,7 @@
 
 - [#17](https://github.com/danielfdickinson/perfectionist-dfd/pull/17) Use PostCSS 5.0 API ([一丝](mailto:percyley@qq.com))
 
-#### Commits to main
+#### Commits to pr-tweaks-cleanup-and-enhancements
 
 - [Update changelog.](https://github.com/danielfdickinson/perfectionist-dfd/commit/4c26bb79ca1ca0a0aa1484c6bbea3110628400b9) ([Ben Briggs](mailto:beneb.info@gmail.com))
 - [Add a note in the readme about the Sublime Text plugin.](https://github.com/danielfdickinson/perfectionist-dfd/commit/b321d8b183fcfa7e8172fcaeee13643ac5ae8c9b) ([Ben Briggs](mailto:beneb.info@gmail.com))
