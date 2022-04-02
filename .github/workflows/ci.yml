@@ -39,6 +39,21 @@ jobs:
         name: perfectionist-dfd-${{ matrix.node-version }}
         path: packdir
         retention-days: 1
+    - name: Coveralls (Parallel)
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.github_token }}
+        flag-name: run-${{ matrix.node-version }}
+        parallel: true
+  finish-coveralls:
+    needs: build-and-test
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Coveralls Finished
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.github_token }}
+          parallel-finished: true
   test-oldnode:
     needs: build-and-test
     runs-on: ubuntu-20.04

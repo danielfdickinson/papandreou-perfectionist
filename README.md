@@ -4,7 +4,7 @@ Beautify CSS files. Fork of a fork of an archived project.
 
 ## Status
 
-[![CI](https://github.com/danielfdickinson/perfectionist-dfd/actions/workflows/ci.yml/badge.svg)](https://github.com/danielfdickinson/perfectionist-dfd/actions/workflows/ci.yml)
+[![CI](https://github.com/danielfdickinson/perfectionist-dfd/actions/workflows/ci.yml/badge.svg)](https://github.com/danielfdickinson/perfectionist-dfd/actions/workflows/ci.yml) [![Coverage](https://coveralls.io/repos/github/danielfdickinson/perfectionist-dfd/badge.svg?branch=main)](https://coveralls.io/github/danielfdickinson/perfectionist-dfd?branch=main)
 
 ## Install
 
