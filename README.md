@@ -1,6 +1,6 @@
 # perfectionist-dfd
 
-Beautify CSS files. Fork of a fork of an archived project.
+Beautify and/or normalize CSS files. Fork and update of a fork and update of an archived project.
 
 ## Status
 

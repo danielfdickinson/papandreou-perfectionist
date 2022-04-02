@@ -1,7 +1,6 @@
 {
   "name": "perfectionist-dfd",
-  "version": "2.4.2-beta.1",
-  "description": "Beautify CSS files. Fork of a fork of an archived project.",
+  "description": "Beautify and/or normalize CSS files. Fork and update of a fork and update of an archived project.",
   "type": "commonjs",
   "main": "dist/perfectionist-dfd.min.js",
   "bin": {
