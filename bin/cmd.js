@@ -23,9 +23,11 @@ var file = opts._[0];
 var out  = opts._[1];
 
 if (file === 'help' || opts.help) {
-    fs.createReadStream(__dirname + '/usage.txt')
-        .pipe(process.stdout)
-        .on('close', function () { process.exit(1); });
+    const reader = fs.createReadStream(__dirname + '/usage.txt');
+    reader.pipe(process.stdout);
+    reader.on('end', () => {
+        process.exit(0);
+    });
 }
 
 read(file, function (err, buf) {
