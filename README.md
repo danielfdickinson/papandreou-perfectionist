@@ -6,6 +6,15 @@ Beautify and/or normalize CSS files. Fork and update of a fork and update of an 
 
 [![perfectionist-dfd CI](https://github.com/danielfdickinson/perfectionist-dfd/actions/workflows/ci.yml/badge.svg)](https://github.com/danielfdickinson/perfectionist-dfd/actions/workflows/ci.yml) [![Coverage](https://coveralls.io/repos/github/danielfdickinson/perfectionist-dfd/badge.svg?branch=main)](https://coveralls.io/github/danielfdickinson/perfectionist-dfd?branch=main) [![Dependency status](https://img.shields.io/librariesio/release/npm/perfectionist-dfd)](https://github.com/danielfdickinson/perfectionist-dfd/blob/main/package.json) [![NPM version](https://img.shields.io/npm/v/perfectionist-dfd)](https://www.npmjs.com/package/perfectionist-dfd?activeTab=versions)
 
+### Future
+
+1. TODO: #10 Update to [PostCSS](https://github.com/postcss/postcss#readme) 8.x API (Wrapping).
+2. TODO: #11 Update easy pieces of [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) to 8.x API.
+3. TODO: #12 Update main logic of [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) to 8.x API.
+4. TODO: #13 Update rest of [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) to 8.x API.
+5. TODO: #14 Improve and enhance [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) as a [PostCSS](https://github.com/postcss/postcss#readme) plugin.
+6. TODO: #15 Improve and enchance as a standalone tool.
+
 ## Install
 
 With [npm](https://npmjs.org/package/perfectionist-dfd) do:
