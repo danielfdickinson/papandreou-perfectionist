@@ -59,6 +59,11 @@ let tests = [{
     fixture: 'h1{width:10.000px}',
     expected: 'h1 {\n    width: 10.000px;\n}\n',
     options: {trimTrailingZeros: false},
+}, {
+    message: 'should expand css',
+    fixture: 'h1{color:black}',
+    expected: 'h1 {\n    color: black;\n}\n',
+    options: {map: false},
 }];
 
 function perfectionistDFD (css, options) {
