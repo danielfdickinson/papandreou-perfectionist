@@ -10,6 +10,7 @@ const perfectionistDFDOldNode = requireShim('..');
 
 var plugin;
 
+if (semver.gt(process.version, 'v16.0.0')) {
     plugin = perfectionistDFDNewNode;
 } else {
     plugin = perfectionistDFDOldNode;

@@ -13,7 +13,7 @@ const pluginOldNode = requireShim('..');
 
 var plugin;
 
-if (semver.gt(process.version, '16.0.0')) {
+if (semver.gt(process.version, 'v16.0.0')) {
     plugin = pluginNewNode;
 } else {
     plugin = pluginOldNode;
