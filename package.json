@@ -40,11 +40,7 @@
   ],
   "license": "MIT",
   "homepage": "https://github.com/danielfdickinson/perfectionist-dfd",
-  "author": {
-    "name": "Daniel F. Dickinson",
-    "email": "dfdpublic@wildtechgarden.ca",
-    "url": "https://www.wildtechgarden.ca/about/"
-  },
+  "author": "Daniel F. Dickinson <dfdpublic@wildtechgarden.ca> (https://www.wildtechgarden.ca/about/)",
   "repository": "danielfdickinson/perfectionist-dfd",
   "dependencies": {
     "defined": "^1.0.0",
