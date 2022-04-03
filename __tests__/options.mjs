@@ -63,7 +63,12 @@ let tests = [{
     message: 'should expand css',
     fixture: 'h1{color:black}',
     expected: 'h1 {\n    color: black;\n}\n',
-    options: {map: false},
+    options: {map: true},
+},  {
+    message: 'should expand css (2)',
+    fixture: 'h1{color:black}',
+    expected: 'h1 {\n    color: black;\n}\n',
+    options: {map: false, sourcemap: true},
 }];
 
 function perfectionistDFD (css, options) {
