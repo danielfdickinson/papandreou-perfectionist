@@ -4,4 +4,4 @@ npm-debug.log
 dist
 packdir
 perfectionist-dfd-*.tgz
-out-test/
+out-test

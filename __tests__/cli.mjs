@@ -12,8 +12,8 @@ const versionString = requireShim('../package.json').version;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const fixture = path.resolve(path.join(__dirname, './fixtures/nested.fixture.css'));
 
-function setup (args) {
-    return execa(path.resolve(path.join(__dirname, '../bin/cmd.js')), args, {stripEof: false, cwd: __dirname, stripFinalNewline: false});
+function setup (args, curdir=__dirname) {
+    return execa(path.resolve(path.join(__dirname, '../bin/cmd.js')), args, {stripEof: false, cwd: curdir, stripFinalNewline: false});
 }
 
 ava('cli: version', t => {
@@ -21,7 +21,6 @@ ava('cli: version', t => {
         t.deepEqual(stdout, versionString + '\n', 'should report the package version');
     });
 });
-
 
 ava('cli: help', t => {
     return setup(['--help']).then(({stdout}) => {
@@ -45,5 +44,11 @@ ava('cli: sourcemaps', t => {
     return setup([fixture, '--sourcemap']).then(({stdout}) => {
         const hasMap = /sourceMappingURL=data:application\/json;base64/.test(stdout);
         t.truthy(hasMap, 'should generate a sourcemap');
+    });
+});
+
+ava('cli: output to file', t => {
+    return setup([fixture, 'out-test'], process.cwd()).then( () => {
+        t.deepEqual(read('out-test', 'utf-8'), read(path.resolve(path.join(__dirname, './fixtures/nested.expanded.css')), 'utf-8'), 'should transform the css and store in output file');
     });
 });

@@ -22,9 +22,9 @@
     "pretest:ci": "npm run lint",
     "preversion": "cpy --flat --rename=CHANGELOG.md .changelog-header.md . && offline-github-changelog --next=${npm_package_version} >> CHANGELOG.md && git add CHANGELOG.md",
     "report": "c8 report -o ./coverage --reporter=text >./coverage/text-report.txt && c8 report -o ./coverage --reporter=lcov",
-    "test": "rollup -c && cross-env NODE_ENV=test ava ./__tests__/*.mjs",
-    "test:ci": "npm run coverage",
-    "test:oldci": "cross-env NODE_ENV=test ava ./__tests__/*.mjs"
+    "test": "del-cli out-test && rollup -c && cross-env NODE_ENV=test ava ./__tests__/*.mjs",
+    "test:ci": "del-cli out-test && npm run coverage",
+    "test:oldci": "del-cli out-test && cross-env NODE_ENV=test ava ./__tests__/*.mjs"
   },
   "keywords": [
     "beautify",
