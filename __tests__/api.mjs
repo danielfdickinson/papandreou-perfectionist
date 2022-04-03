@@ -4,9 +4,9 @@ import { createRequire } from 'module';
 import perfectionistDFDNewNode from '../src/index.mjs';
 import semver from 'semver';
 
-const require = createRequire(import.meta.url);
-const pkg = require('../package.json');
-const perfectionistDFDOldNode = require('..');
+const requireShim = createRequire(import.meta.url);
+const pkg = requireShim('../package.json');
+const perfectionistDFDOldNode = requireShim('..');
 
 var perfectionistDFD;
 

@@ -8,11 +8,8 @@ import { createRequire } from 'module';
 import semver from 'semver';
 import pluginNewNode from '../src/index.mjs';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const base = path.resolve(path.join(__dirname,'./fixtures'));
-
-const require = createRequire(import.meta.url);
-const pluginOldNode = require('..');
+const requireShim = createRequire(import.meta.url);
+const pluginOldNode = requireShim('..');
 
 var plugin;
 
@@ -25,6 +22,9 @@ if (semver.gt(process.version, '16.0.0')) {
 function perfectionistDFD (css, options) {
     return plugin.process(css, options).css;
 }
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const base = path.resolve(path.join(__dirname,'./fixtures'));
 
 let specs = fs.readdirSync(base).reduce((tests, css) => {
     let [spec, style] = css.split('.');

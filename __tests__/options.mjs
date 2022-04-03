@@ -3,8 +3,8 @@ import { createRequire } from 'module';
 import semver from 'semver';
 import pluginNewNode from '../src/index.mjs';
 
-const require = createRequire(import.meta.url);
-const pluginOldNode = require('..');
+const requireShim = createRequire(import.meta.url);
+const pluginOldNode = requireShim('..');
 
 var plugin;
 
