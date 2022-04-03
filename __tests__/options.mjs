@@ -59,15 +59,15 @@ let tests = [{
     fixture: 'h1{width:10.000px}',
     expected: 'h1 {\n    width: 10.000px;\n}\n',
     options: {trimTrailingZeros: false},
-}, {
+}];
+
+let mapTests = [{
     message: 'should expand css',
     fixture: 'h1{color:black}',
-    expected: 'h1 {\n    color: black;\n}\n',
     options: {map: true},
-},  {
+}, {
     message: 'should expand css (2)',
     fixture: 'h1{color:black}',
-    expected: 'h1 {\n    color: black;\n}\n',
     options: {map: false, sourcemap: true},
 }];
 
@@ -76,7 +76,14 @@ function perfectionistDFD (css, options) {
 }
 
 ava('perfectionistDFD options', (t) => {
-    tests.forEach(({fixture, expected, options}) => {
-        t.deepEqual(perfectionistDFD(fixture, options || {}), expected);
+    tests.forEach(({fixture, expected, options, message}) => {
+        t.deepEqual(perfectionistDFD(fixture, options || {}), expected, message);
+    });
+});
+
+ava('perfectionistDFD map options', (t) => {
+    mapTests.forEach(({fixture, options, message}) => {
+        const hasMap = /sourceMappingURL=data:application\/json;base64/.test(perfectionistDFD(fixture, options || {}));
+        t.truthy(hasMap, message);
     });
 });
