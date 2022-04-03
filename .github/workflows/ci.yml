@@ -27,6 +27,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+    - run: npm install postcss
     - run: npm run build --if-present
     - run: npm run test:ci
     - run: mkdir packdir && cp -r __tests__ src packdir && npm pack --pack-destination packdir
@@ -73,7 +74,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
-    - run: npm install ava execa cross-env
+    - run: npm install postcss ava execa cross-env
 #    - name: Copy test to root dir
 #      run: cp -r perfectionist-dfd/packdir/__tests_ .
     - name: Run tests using Old Node (${{ matrix.node-version }})
