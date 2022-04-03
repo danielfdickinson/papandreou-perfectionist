@@ -14,6 +14,10 @@ if (semver.gt(process.version, '16.0.0')) {
     plugin = pluginOldNode;
 }
 
+function perfectionistDFD (css, options) {
+    return plugin.process(css, options).css;
+}
+
 let tests = [{
     message: 'should have a configurable indent size',
     fixture: 'h1{color:black}',
@@ -71,9 +75,6 @@ let mapTests = [{
     options: {map: false, sourcemap: true},
 }];
 
-function perfectionistDFD (css, options) {
-    return plugin.process(css, options).css;
-}
 
 ava('perfectionistDFD options', (t) => {
     tests.forEach(({fixture, expected, options, message}) => {

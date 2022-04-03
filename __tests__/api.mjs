@@ -8,12 +8,11 @@ const requireShim = createRequire(import.meta.url);
 const pkg = requireShim('../package.json');
 const perfectionistDFDOldNode = requireShim('..');
 
-var perfectionistDFD;
+var plugin;
 
-if (semver.gt(process.version, '16.0.0')) {
-    perfectionistDFD = perfectionistDFDNewNode;
+    plugin = perfectionistDFDNewNode;
 } else {
-    perfectionistDFD = perfectionistDFDOldNode;
+    plugin = perfectionistDFDOldNode;
 }
 
 function usage (t, instance) {
@@ -23,11 +22,11 @@ function usage (t, instance) {
     });
 }
 
-ava('can be used as a postcss plugin', usage, postcss().use(perfectionistDFD()));
-ava('can be used as a postcss plugin (2)', usage, postcss([ perfectionistDFD() ]));
-ava('can be used as a postcss plugin (3)', usage, postcss([ perfectionistDFD ]));
+ava('can be used as a postcss plugin', usage, postcss().use(plugin()));
+ava('can be used as a postcss plugin (2)', usage, postcss([ plugin() ]));
+ava('can be used as a postcss plugin (3)', usage, postcss([ plugin ]));
 
 ava('should use the postcss plugin api', t => {
-    t.truthy(perfectionistDFD().postcssVersion, 'should be able to access version');
-    t.deepEqual(perfectionistDFD().postcssPlugin, pkg.name, 'should be able to access name');
+    t.truthy(plugin().postcssVersion, 'should be able to access version');
+    t.deepEqual(plugin().postcssPlugin, pkg.name, 'should be able to access name');
 });
