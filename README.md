@@ -20,7 +20,7 @@ Beautify and/or normalize CSS files. Fork and update of a fork and update of an 
 With [npm](https://npmjs.org/package/perfectionist-dfd) do:
 
 ```sh
-npm install perfectionist-dfd --save
+npm install postcss perfectionist-dfd --save
 ```
 
 ## Example
