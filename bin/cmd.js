@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 var fs = require('fs');
-var perfectionistDFD = require('../dist/perfectionist-dfd.min.js');
 var read = require('read-file-stdin');
 var write = require('write-file-stdout');
+var perfectionistDFD = require('../dist/perfectionist-dfd.min.js');
 
 var opts = require('minimist')(process.argv.slice(2), {
     alias: {
