@@ -26,7 +26,7 @@ ava('can be used as a postcss plugin', usage, postcss().use(plugin()));
 ava('can be used as a postcss plugin (2)', usage, postcss([ plugin() ]));
 ava('can be used as a postcss plugin (3)', usage, postcss([ plugin ]));
 
-ava('should use the postcss plugin api', t => {
+ava('use the postcss plugin api', t => {
     t.truthy(plugin().postcssVersion, 'should be able to access version');
     t.deepEqual(plugin().postcssPlugin, pkg.name, 'should be able to access name');
 });

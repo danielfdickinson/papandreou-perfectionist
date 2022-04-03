@@ -53,16 +53,16 @@ const scss = (css, format) => {
     }).css;
 };
 
-ava('should handle single line comments', t => {
+ava('handle single line comments', t => {
     const input = 'h1{\n  // test \n  color: red;\n}\n';
-    t.deepEqual(scss(input, 'expanded'), 'h1 {\n    // test \n    color: red;\n}\n');
-    t.deepEqual(scss(input, 'compact'), 'h1 {/* test */ color: red; }\n');
-    t.deepEqual(scss(input, 'compressed'), 'h1{/* test */color:red}');
+    t.deepEqual(scss(input, 'expanded'), 'h1 {\n    // test \n    color: red;\n}\n', 'should output the expected result');
+    t.deepEqual(scss(input, 'compact'), 'h1 {/* test */ color: red; }\n', 'should output the expected result');
+    t.deepEqual(scss(input, 'compressed'), 'h1{/* test */color:red}', 'should output the expected result');
 });
 
-ava('should handle single line comments in @import', t => {
+ava('handle single line comments in @import', t => {
     const css = 'a, a:visited {\n    //@include border-radius(5px);\n    @include transition(background-color 0.2s ease);\n}\n';
-    t.deepEqual(scss(css), css);
+    t.deepEqual(scss(css), css, 'should output the expected result');
 });
 
 let ensureRed = () => {
@@ -82,10 +82,10 @@ let ensureRed = () => {
 
 function handleRaws (t, opts = {}) {
     return postcss([ensureRed, plugin(opts)]).process('h1 { color: blue }', {from: undefined}).then(({css}) => {
-        t.falsy(!!~css.indexOf('undefined'));
+        t.falsy(!!~css.indexOf('undefined'), 'should be falsy');
     });
 }
 
-ava('should handle declarations added without raw properties (default)', handleRaws);
-ava('should handle declarations added without raw properties (compact)', handleRaws, {format: 'compact'});
-ava('should handle declarations added without raw properties (compressed)', handleRaws, {format: 'compressed'});
+ava('handle declarations added without raw properties: default', handleRaws);
+ava('handle declarations added without raw properties: compact', handleRaws, {format: 'compact'});
+ava('handle declarations added without raw properties: compressed', handleRaws, {format: 'compressed'});

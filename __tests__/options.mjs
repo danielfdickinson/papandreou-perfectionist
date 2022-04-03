@@ -19,64 +19,64 @@ function perfectionistDFD (css, options) {
 }
 
 let tests = [{
-    message: 'should have a configurable indent size',
+    message: 'configurable indent size',
     fixture: 'h1{color:black}',
     expected: 'h1 {\n  color: black;\n}\n',
     options: {indentSize: 2},
 }, {
-    message: 'should have a configurable indent type',
+    message: 'configurable indent type',
     fixture: 'h1{color:black}',
     expected: 'h1 {\n	color: black;\n}\n',
     options: {indentChar: '\t', indentSize: 1},
 }, {
-    message: 'should allow disabling of the cascade',
+    message: 'disable the cascade',
     fixture: 'h1{-webkit-border-radius: 12px; border-radius: 12px; }',
     expected: 'h1 {\n    -webkit-border-radius: 12px;\n    border-radius: 12px;\n}\n',
     options: {cascade: false},
 }, {
-    message: 'should convert hex colours to uppercase',
+    message: 'convert hex colours to uppercase',
     fixture: 'h1{color:#fff}',
     expected: 'h1 {\n    color: #FFF;\n}\n',
     options: {colorCase: 'upper'},
 }, {
-    message: 'should expand shorthand hex',
+    message: 'expand shorthand hex',
     fixture: 'h1{color:#fff}',
     expected: 'h1 {\n    color: #ffffff;\n}\n',
     options: {colorShorthand: false},
 }, {
-    message: 'should expand shorthand hex (2)',
+    message: 'expand shorthand hex (2)',
     fixture: 'h1{color:#ffffff}',
     expected: 'h1 {\n    color: #ffffff;\n}\n',
     options: {colorShorthand: false},
 }, {
-    message: 'should not remove units from zero lengths',
+    message: 'do not remove units from zero lengths',
     fixture: 'h1{width:0px}',
     expected: 'h1 {\n    width: 0px;\n}\n',
     options: {zeroLengthNoUnit: false},
 }, {
-    message: 'should add leading zeroes',
+    message: 'add leading zeroes',
     fixture: 'h1{width:.5px}',
     expected: 'h1 {\n    width: 0.5px;\n}\n',
     options: {trimLeadingZero: false},
 }, {
-    message: 'should not trim trailing zeroes',
+    message: 'do not trim trailing zeroes',
     fixture: 'h1{width:10.000px}',
     expected: 'h1 {\n    width: 10.000px;\n}\n',
     options: {trimTrailingZeros: false},
 }];
 
 let mapTests = [{
-    message: 'should expand css',
+    message: 'expand css',
     fixture: 'h1{color:black}',
     options: {map: true},
 }, {
-    message: 'should expand css (2)',
+    message: 'expand css (2)',
     fixture: 'h1{color:black}',
     options: {map: false, sourcemap: true},
 }];
 
 Object.keys(tests).forEach(key => {
-    ava(`perfectionistDFD options: ${tests[key]['message']}`, t => {
+    ava(`fixture: ${tests[key]['message']}`, t => {
         t.deepEqual(perfectionistDFD(tests[key]['fixture'], tests[key]['options'] || {}), tests[key]['expected'],
             'should output the expected result');
     });
@@ -84,7 +84,7 @@ Object.keys(tests).forEach(key => {
 });
 
 Object.keys(mapTests).forEach(key => {
-    ava(`perfectionistDFD map options: ${mapTests[key]['message']}`, t => {
+    ava(`fixture: ${mapTests[key]['message']}`, t => {
         const hasMap = /sourceMappingURL=data:application\/json;base64/.test(perfectionistDFD(mapTests[key]['fixture'], mapTests[key]['options'] || {}));
         t.truthy(hasMap, mapTests[key]['message']);
     });
