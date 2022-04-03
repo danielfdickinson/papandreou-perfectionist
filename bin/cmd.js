@@ -36,8 +36,6 @@ read(file, function (err, buf) {
     }
     if (file) {
         opts.from = file;
-    } else {
-        opts.from = undefined;
     }
     if (out) {
         opts.to = out;

@@ -64,10 +64,6 @@ const perfectionistDFD = (opts = {}) => {
 };
 
 const perfectionistDFDProcess = (css, opts = {}) => {
-    if (typeof opts === 'undefined') {
-        opts = {};
-    }
-
     opts = checkOpts({
         from: undefined,
         map: undefined,
