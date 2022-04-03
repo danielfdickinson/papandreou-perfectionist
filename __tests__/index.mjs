@@ -65,20 +65,23 @@ ava('should handle single line comments in @import', t => {
     t.deepEqual(scss(css), css);
 });
 
-let ensureRed = postcss.plugin('ensure-red', () => {
-    return css => {
-        let rule = postcss.rule({selector: '*'});
-        rule.append(postcss.decl({
-            prop: 'color',
-            value: 'red',
-            important: true,
-        }));
-        css.append(rule);
+let ensureRed = () => {
+    return {
+        postcssPlugin: 'ensure-red',
+        Once(css) {
+            let rule = postcss.rule({selector: '*'});
+            rule.append(postcss.decl({
+                prop: 'color',
+                value: 'red',
+                important: true,
+            }));
+            css.append(rule);
+        }
     };
-});
+};
 
 function handleRaws (t, opts = {}) {
-    return postcss([ensureRed, plugin(opts)]).process('h1 { color: blue }').then(({css}) => {
+    return postcss([ensureRed, plugin(opts)]).process('h1 { color: blue }', {from: undefined}).then(({css}) => {
         t.falsy(!!~css.indexOf('undefined'));
     });
 }

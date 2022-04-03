@@ -18,9 +18,8 @@ if (semver.gt(process.version, 'v16.0.0')) {
 
 function usage (t, instance) {
     const input = 'h1 { color: #fff }';
-    return instance.process(input).then(({css}) => {
-        t.deepEqual(css, 'h1 {\n    color: #fff;\n}\n', 'should be consumed');
-    });
+    const output = instance.process(input).css;
+    return t.deepEqual(output, 'h1 {\n    color: #fff;\n}\n', 'should be consumed');
 }
 
 ava('can be used as a postcss plugin', usage, postcss().use(plugin()));
