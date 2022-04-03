@@ -14,6 +14,9 @@
     "LICENSE",
     "README.md"
   ],
+  "publishConfig": {
+    "tag": "devel"
+  },
   "scripts": {
     "coverage": "rollup -c && cross-env NODE_ENV=test c8 ava ./__tests__/*.mjs",
     "lint": "eslint src --ext .mjs --ext .js",
