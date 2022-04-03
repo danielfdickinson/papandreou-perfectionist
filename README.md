@@ -4,25 +4,9 @@ Beautify and/or normalize CSS files. Fork and update of a fork and update of an 
 
 ## Status
 
-[![perfectionist-dfd CI](https://github.com/danielfdickinson/perfectionist-dfd/actions/workflows/ci.yml/badge.svg)](https://github.com/danielfdickinson/perfectionist-dfd/actions/workflows/ci.yml) [![Coverage](https://coveralls.io/repos/github/danielfdickinson/perfectionist-dfd/badge.svg?branch=main)](https://coveralls.io/github/danielfdickinson/perfectionist-dfd?branch=main) [![Dependency status](https://img.shields.io/librariesio/release/npm/perfectionist-dfd)](https://github.com/danielfdickinson/perfectionist-dfd/blob/main/package.json) [![NPM version](https://img.shields.io/npm/v/perfectionist-dfd)](https://www.npmjs.com/package/perfectionist-dfd?activeTab=versions)
+[![perfectionist-dfd CI](https://github.com/danielfdickinson/perfectionist-dfd/actions/workflows/ci.yml/badge.svg)](https://github.com/danielfdickinson/perfectionist-dfd/actions/workflows/ci.yml) [![Coverage](https://coveralls.io/repos/github/danielfdickinson/perfectionist-dfd/badge.svg?branch=main)](https://coveralls.io/github/danielfdickinson/perfectionist-dfd?branch=main) [![Dependency status](https://img.shields.io/librariesio/release/npm/perfectionist-dfd)](https://libraries.io/npm/perfectionist-dfd) [![NPM version](https://img.shields.io/npm/v/perfectionist-dfd)](https://www.npmjs.com/package/perfectionist-dfd?activeTab=versions)
 
-### Future
-
-1. TODO: #11 Update easy pieces of [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) to 8.x API.
-2. TODO: #12 Update main logic of [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) to 8.x API.
-3. TODO: #13 Update rest of [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) to 8.x API.
-4. TODO: #14 Improve and enhance [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) as a [PostCSS](https://github.com/postcss/postcss#readme) plugin.
-5. TODO: #15 Improve and enhance as a standalone tool.
-
-## Install
-
-With [npm](https://npmjs.org/package/perfectionist-dfd) do:
-
-```sh
-npm install postcss perfectionist-dfd --save
-```
-
-## Example
+## Example runs
 
 ### Input
 
@@ -51,6 +35,33 @@ h1 { color: red; }
 h1{color:red}
 ```
 
+## Supported Environments
+
+* Currently [Node.js](https://nodejs.org) 12+ are supported.
+* REVIEW: May add browser support in the future.
+
+## Install
+
+With [npm](https://npmjs.org/package/perfectionist-dfd) do:
+
+```sh
+npm install postcss perfectionist-dfd --save
+```
+
+## Import (ES6+) or require (CommonJS) in your source file
+
+### ES6+
+
+```javascript
+import perfectionistDFD from 'perfectionist-dfd';
+```
+
+### CommonJS
+
+```javascript
+const perfectionistDFD = require('perfectionist-dfd');
+```
+
 ## API
 
 ### perfectionistDFD.process(css, [options])
@@ -58,11 +69,14 @@ h1{color:red}
 #### css
 
 Type: `string`
-*Required option.*
+_Required option._
 
 Pass a CSS string to beautify it.
 
 #### options
+
+Type: `object`
+_optional_
 
 ##### cascade
 
@@ -229,24 +243,46 @@ div { padding: 0 }
 div { padding: 0px }
 ```
 
+#### Example using perfectionistDFD.process
+
+```javascript
+import perfectionistDFD from 'perfectionist-dfd'
+
+const pftDFDOpts = {
+    indentSize: 2,
+    trimLeadingZero: false
+}
+
+const outCSS = perfectionistDFD.process(css, pftDFDOpts).css
+```
+
 ### `postcss([ perfectionistDFD(opts) ])`
 
-perfectionist can also be consumed as a PostCSS plugin. See the
-[documentation](https://github.com/postcss/postcss#usage) for examples for
+perfectionist-dfd can also be consumed as a PostCSS plugin. See the
+[PostCSS documentation](https://github.com/postcss/postcss#usage) for examples for
 your environment.
 
 ### CLI
 
-perfectionist also ships with a CLI app. To see the available options, just run:
+perfectionist-dfd also ships with a CLI app. To see the available options, just run:
 
 ```sh
 perfectionist-dfd --help
 ```
 
-## Usage
+### PostCSS usage
 
 See the [PostCSS documentation](https://github.com/postcss/postcss#usage) for
 examples for your environment.
+
+## Future
+
+1. TODO: #11 Update easy pieces of [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) to 8.x API.
+2. TODO: #12 Update main logic of [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) to 8.x API.
+3. TODO: #13 Update rest of [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) to 8.x API.
+4. TODO: #14 Improve and enhance [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) as a [PostCSS](https://github.com/postcss/postcss#readme) plugin.
+5. TODO: #15 Improve and enhance as a standalone tool.
+6. REVIEW: #24 Add support for use in browser environments.
 
 ## Contributing
 
@@ -255,5 +291,5 @@ to cover it.
 
 ## License
 
-MIT © 2015 [Ben Briggs](http://beneb.info) \
+MIT © 2015 [Ben Briggs](https://beneb.info) \
 MIT © 2022 [Daniel F. Dickinson](https://www.wildtechgarden.ca/danielfdickinson/)
