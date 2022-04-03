@@ -52,3 +52,9 @@ ava('cli: output to file', t => {
         t.deepEqual(read('out-test', 'utf-8'), read(path.resolve(path.join(__dirname, './fixtures/nested.expanded.css')), 'utf-8'), 'should transform the css and store in output file');
     });
 });
+
+ava('cli: throws error on missing input file', async t => {
+    await t.throwsAsync(async () => {
+        return setup(['/no/such/file.none'], '/');
+    }, undefined, 'should throw an error');
+});
