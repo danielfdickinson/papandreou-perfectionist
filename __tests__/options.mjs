@@ -44,7 +44,7 @@ let tests = [{
     expected: 'h1 {\n    color: #ffffff;\n}\n',
     options: {colorShorthand: false},
 }, {
-    message: 'should expand shorthand hex',
+    message: 'should expand shorthand hex (2)',
     fixture: 'h1{color:#ffffff}',
     expected: 'h1 {\n    color: #ffffff;\n}\n',
     options: {colorShorthand: false},
@@ -75,16 +75,17 @@ let mapTests = [{
     options: {map: false, sourcemap: true},
 }];
 
-
-ava('perfectionistDFD options', (t) => {
-    tests.forEach(({fixture, expected, options, message}) => {
-        t.deepEqual(perfectionistDFD(fixture, options || {}), expected, message);
+Object.keys(tests).forEach(key => {
+    ava(`perfectionistDFD options: ${tests[key]['message']}`, t => {
+        t.deepEqual(perfectionistDFD(tests[key]['fixture'], tests[key]['options'] || {}), tests[key]['expected'],
+            'should output the expected result');
     });
+
 });
 
-ava('perfectionistDFD map options', (t) => {
-    mapTests.forEach(({fixture, options, message}) => {
-        const hasMap = /sourceMappingURL=data:application\/json;base64/.test(perfectionistDFD(fixture, options || {}));
-        t.truthy(hasMap, message);
+Object.keys(mapTests).forEach(key => {
+    ava(`perfectionistDFD map options: ${mapTests[key]['message']}`, t => {
+        const hasMap = /sourceMappingURL=data:application\/json;base64/.test(perfectionistDFD(mapTests[key]['fixture'], mapTests[key]['options'] || {}));
+        t.truthy(hasMap, mapTests[key]['message']);
     });
 });
