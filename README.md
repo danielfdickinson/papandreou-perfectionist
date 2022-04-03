@@ -8,12 +8,11 @@ Beautify and/or normalize CSS files. Fork and update of a fork and update of an 
 
 ### Future
 
-1. TODO: #10 Update to [PostCSS](https://github.com/postcss/postcss#readme) 8.x API (Wrapping).
-2. TODO: #11 Update easy pieces of [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) to 8.x API.
-3. TODO: #12 Update main logic of [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) to 8.x API.
-4. TODO: #13 Update rest of [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) to 8.x API.
-5. TODO: #14 Improve and enhance [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) as a [PostCSS](https://github.com/postcss/postcss#readme) plugin.
-6. TODO: #15 Improve and enhance as a standalone tool.
+1. TODO: #11 Update easy pieces of [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) to 8.x API.
+2. TODO: #12 Update main logic of [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) to 8.x API.
+3. TODO: #13 Update rest of [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) to 8.x API.
+4. TODO: #14 Improve and enhance [perfectionist-dfd](https://github.com/danielfdickinson/perfectionist-dfd) as a [PostCSS](https://github.com/postcss/postcss#readme) plugin.
+5. TODO: #15 Improve and enhance as a standalone tool.
 
 ## Install
 
