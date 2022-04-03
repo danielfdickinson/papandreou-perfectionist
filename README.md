@@ -124,7 +124,7 @@ Default: `expanded`
 
 Pass either `expanded`, `compact` or `compressed`. Note that the `compressed`
 format only facilitates simple whitespace compression around selectors &
-declarations. For more powerful compression, see [cssnano].
+declarations. For more powerful compression, see [cssnano](https://cssnano.co).
 
 ##### indentChar
 
