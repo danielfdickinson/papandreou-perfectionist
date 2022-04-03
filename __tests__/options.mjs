@@ -1,5 +1,18 @@
 import ava from 'ava';
-import plugin from '../src/index.mjs';
+import { createRequire } from 'module';
+import semver from 'semver';
+import pluginNewNode from '../src/index.mjs';
+
+const require = createRequire(import.meta.url);
+const pluginOldNode = require('..');
+
+var plugin;
+
+if (semver.gt(process.version, '16.0.0')) {
+    plugin = pluginNewNode;
+} else {
+    plugin = pluginOldNode;
+}
 
 let tests = [{
     message: 'should have a configurable indent size',

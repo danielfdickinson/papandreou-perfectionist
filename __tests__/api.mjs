@@ -1,10 +1,20 @@
 import postcss from 'postcss';
 import ava from 'ava';
 import { createRequire } from 'module';
-import perfectionistDFD from '../src/index.mjs';
+import perfectionistDFDNewNode from '../src/index.mjs';
+import semver from 'semver';
 
 const require = createRequire(import.meta.url);
 const pkg = require('../package.json');
+const perfectionistDFDOldNode = require('..');
+
+var perfectionistDFD;
+
+if (semver.gt(process.version, '16.0.0')) {
+    perfectionistDFD = perfectionistDFDNewNode;
+} else {
+    perfectionistDFD = perfectionistDFDOldNode;
+}
 
 function usage (t, instance) {
     const input = 'h1 { color: #fff }';

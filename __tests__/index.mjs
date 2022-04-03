@@ -4,10 +4,23 @@ import ava from 'ava';
 import postcss from 'postcss';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import plugin from '../src/index.mjs';
+import { createRequire } from 'module';
+import semver from 'semver';
+import pluginNewNode from '../src/index.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const base = path.resolve(path.join(__dirname,'./fixtures'));
+
+const require = createRequire(import.meta.url);
+const pluginOldNode = require('..');
+
+var plugin;
+
+if (semver.gt(process.version, '16.0.0')) {
+    plugin = pluginNewNode;
+} else {
+    plugin = pluginOldNode;
+}
 
 function perfectionistDFD (css, options) {
     return plugin.process(css, options).css;

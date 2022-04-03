@@ -24,7 +24,7 @@
     "report": "c8 report -o ./coverage --reporter=text >./coverage/text-report.txt && c8 report -o ./coverage --reporter=lcov",
     "test": "rollup -c && cross-env NODE_ENV=test ava ./__tests__/*.mjs",
     "test:ci": "npm run coverage",
-    "test:oldci": "cross-env NODE_ENV=test ava ./__tests-oldnode__/*.mjs"
+    "test:oldci": "cross-env NODE_ENV=test ava ./__tests__/*.mjs"
   },
   "keywords": [
     "beautify",
@@ -50,6 +50,7 @@
     "postcss-scss": "^4.0.3",
     "postcss-value-parser": "^4.2.0",
     "read-file-stdin": "^0.2.1",
+    "semver": "^7.3.5",
     "string.prototype.repeat": "^1.0.0",
     "write-file-stdout": "^0.0.2"
   },
