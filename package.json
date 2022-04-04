@@ -1,6 +1,6 @@
 {
   "name": "perfectionist-dfd",
-  "version": "3.0.0-alpha.3-dev.2",
+  "version": "3.0.0",
   "description": "Beautify and/or normalize CSS files. Fork and update of a fork and update of an archived project.",
   "type": "commonjs",
   "main": "dist/perfectionist-dfd.min.js",
