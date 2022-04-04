@@ -18,16 +18,19 @@
     "tag": "devel"
   },
   "scripts": {
-    "coverage": "rollup -c && cross-env NODE_ENV=test c8 ava ./__tests__/*.mjs",
+    "precoverage": "npm run lint && del-cli out-test dist && cross-env NODE_ENV=test rollup -c",
+    "coverage": "cross-env NODE_ENV=test c8 ava ./__tests__/*.mjs",
     "lint": "eslint src --ext .mjs --ext .js",
-    "prepublishOnly": "del-cli dist && rollup -c",
-    "pretest": "npm run lint",
-    "pretest:ci": "npm run lint",
-    "preversion": "cpy --flat --rename=CHANGELOG.md .changelog-header.md . && offline-github-changelog --next=${npm_package_version} >> CHANGELOG.md && git add CHANGELOG.md",
+    "production": "npm run test && del-cli dist && cross-env NODE_ENV=production rollup -c",
+    "preversion": "npm run production",
+    "prepublishOnly": "npm run production",
+    "version": "cpy --flat --rename=CHANGELOG.md .changelog-header.md . && offline-github-changelog --next=${npm_package_version} >> CHANGELOG.md && git add CHANGELOG.md",
     "report": "c8 report -o ./coverage --reporter=text >./coverage/text-report.txt && c8 report -o ./coverage --reporter=lcov",
-    "test": "del-cli out-test && rollup -c && cross-env NODE_ENV=test ava ./__tests__/*.mjs",
-    "test:ci": "del-cli out-test && npm run coverage",
-    "test:oldci": "del-cli out-test && cross-env NODE_ENV=test ava ./__tests__/*.mjs"
+    "pretest": "npm run lint && del-cli out-test dist && cross-env NODE_ENV=test rollup -c",
+    "test": "cross-env NODE_ENV=test ava ./__tests__/*.mjs",
+    "test:ci": "npm run coverage",
+    "pretest:oldci": "del-cli out-test",
+    "test:oldci": "cross-env NODE_ENV=test ava ./__tests__/*.mjs"
   },
   "keywords": [
     "beautify",
