@@ -1,8 +1,10 @@
 # perfectionist-dfd
 
-Beautify and/or normalize CSS files. Fork and update of a fork and update of an archived project.
+Beautify and/or normalize CSS files. Fork and update of a fork and update of an archived project. DEPRECATED.
 
 ## Status
+
+DEPRECATED: The codebase is old and other alternatives exist (prettier for formatting, normalize-css for CSS normalization, and others)
 
 [![perfectionist-dfd CI](https://github.com/danielfdickinson/perfectionist-dfd/actions/workflows/ci.yml/badge.svg)](https://github.com/danielfdickinson/perfectionist-dfd/actions/workflows/ci.yml) [![Coverage](https://coveralls.io/repos/github/danielfdickinson/perfectionist-dfd/badge.svg?branch=main)](https://coveralls.io/github/danielfdickinson/perfectionist-dfd?branch=main) [![NPM version](https://img.shields.io/npm/v/perfectionist-dfd)](https://www.npmjs.com/package/perfectionist-dfd?activeTab=versions)
 
